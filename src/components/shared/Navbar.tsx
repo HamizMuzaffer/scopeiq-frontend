@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from './ThemeProvider';
 import { Sun, Moon, Menu, X, Terminal, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -25,14 +26,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo / Branding */}
           <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2 font-mono text-xl font-bold tracking-tight text-foreground">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground neon-glow">
-                <Cpu className="h-5 w-5" />
-              </span>
-              <span>
-                Scope<span className="text-primary font-extrabold">IQ</span>
-              </span>
-            </Link>
+            <Image src="/logo.png" alt="Logo" width={32} height={32} />
           </div>
 
           {/* Desktop Navigation */}
@@ -43,9 +37,8 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative text-sm font-medium tracking-wide transition-colors hover:text-primary ${
-                    isActive ? 'text-primary' : 'text-muted-foreground'
-                  }`}
+                  className={`relative text-sm font-medium tracking-wide transition-colors hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'
+                    }`}
                 >
                   {link.name}
                   {isActive && (
@@ -120,11 +113,10 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors ${
-                      isActive
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-muted-foreground hover:bg-secondary/40 hover:text-foreground'
-                    }`}
+                    className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors ${isActive
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-muted-foreground hover:bg-secondary/40 hover:text-foreground'
+                      }`}
                   >
                     {link.name}
                   </Link>
