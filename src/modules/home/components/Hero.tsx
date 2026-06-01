@@ -15,7 +15,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden py-20 lg:py-28 font-sans">
+    <section className="relative overflow-hidden py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
@@ -109,7 +109,7 @@ export default function Hero() {
                   <span className="h-3 w-3 rounded-full bg-yellow-500/80"></span>
                   <span className="h-3 w-3 rounded-full bg-primary/80"></span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground">
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                   <Terminal className="h-3.5 w-3.5" />
                   <span>scopeiq-neural-viz ~ bash</span>
                 </div>
@@ -117,7 +117,7 @@ export default function Hero() {
               </div>
 
               {/* Mock Scoping Terminal Content */}
-              <div className="p-6 font-mono text-xs sm:text-sm text-foreground space-y-4 min-h-[300px] bg-card rounded-b-xl flex flex-col justify-between">
+              <div className="p-6 text-xs sm:text-sm text-foreground space-y-4 min-h-[300px] bg-card rounded-b-xl flex flex-col justify-between">
                 
                 {/* Node Grid Graphic mockup */}
                 <div className="space-y-3">

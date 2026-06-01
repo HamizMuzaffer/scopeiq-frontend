@@ -13,7 +13,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export default function Features() {
   return (
-    <section className="py-20 bg-card/10 border-t border-border/20 relative z-10 font-sans">
+    <section className="py-20 bg-card/10 border-t border-border/20 relative z-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

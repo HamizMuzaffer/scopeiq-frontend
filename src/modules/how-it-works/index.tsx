@@ -32,7 +32,7 @@ export default function HowItWorksModule() {
   };
 
   return (
-    <div className="flex-1 py-16 sm:py-24 font-sans relative z-10">
+    <div className="flex-1 py-16 sm:py-24 relative z-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header Hero */}
@@ -75,7 +75,7 @@ export default function HowItWorksModule() {
               )}
 
               <div>
-                <span className="block font-mono text-3xl font-extrabold text-primary/30 mb-4 tracking-tight">
+                <span className="block text-3xl font-extrabold text-primary/30 mb-4 tracking-tight">
                   {step.step}
                 </span>
                 <h3 className="text-base font-bold text-foreground mb-2">

@@ -7,7 +7,7 @@ import { ShieldAlert, Award, Compass, Users2, Activity } from 'lucide-react';
 
 export default function AboutModule() {
   return (
-    <div className="flex-1 py-16 sm:py-24 font-sans relative z-10">
+    <div className="flex-1 py-16 sm:py-24 relative z-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header Hero */}
@@ -65,7 +65,7 @@ export default function AboutModule() {
                 </span>
 
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-sm font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
+                  <span className="text-sm font-bold text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20">
                     {milestone.year}
                   </span>
                   <h3 className="text-lg font-bold text-foreground">

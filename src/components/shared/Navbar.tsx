@@ -7,6 +7,7 @@ import { useTheme } from './ThemeProvider';
 import { Sun, Moon, Menu, X, Terminal, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -25,8 +26,10 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo / Branding */}
-          <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Logo" width={32} height={32} />
+          <div className="flex items-center gap-2 hover:cursor-pointer">
+            <Link href="/">
+              <Image src="/logo.png" alt="Logo" width={32} height={32} />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -66,6 +69,12 @@ export default function Navbar() {
                 <Moon className="h-5 w-5 transition-transform hover:-rotate-12" />
               )}
             </button>
+
+            <Button variant="ghost" size="lg">
+              <Link href="/sign-in">
+                Sign In
+              </Link>
+            </Button>
 
             <Link
               href="/how-it-works"
@@ -122,7 +131,15 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <div className="pt-4 border-t border-border/40 mt-4 px-3">
+              <div className="pt-4 border-t border-border/40 mt-4 px-3 space-y-2">
+                <Button variant="ghost" size="lg" className="w-full">
+                  <Link
+                    href="/sign-in"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                </Button>
                 <Link
                   href="/how-it-works"
                   onClick={() => setMobileMenuOpen(false)}

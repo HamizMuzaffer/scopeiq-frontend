@@ -15,9 +15,9 @@ export default function CaseStudiesModule() {
   );
 
   return (
-    <div className="flex-1 py-16 sm:py-24 font-sans relative z-10">
+    <div className="flex-1 py-16 sm:py-24 relative z-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Hero */}
         <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
           <motion.div
@@ -47,11 +47,10 @@ export default function CaseStudiesModule() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`relative rounded-lg px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${
-                selectedCategory === category
-                  ? 'bg-primary text-primary-foreground neon-glow'
-                  : 'text-muted-foreground hover:bg-secondary/40 hover:text-foreground'
-              }`}
+              className={`relative rounded-lg px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${selectedCategory === category
+                ? 'bg-primary text-primary-foreground neon-glow'
+                : 'text-muted-foreground hover:bg-secondary/40 hover:text-foreground'
+                }`}
             >
               {category}
             </button>
@@ -74,7 +73,7 @@ export default function CaseStudiesModule() {
                 <div>
                   {/* Category Badge & Arrow */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono font-bold text-primary uppercase bg-primary/10 px-2.5 py-0.5 rounded border border-primary/20">
+                    <span className="text-xs font-bold text-primary uppercase bg-primary/10 px-2.5 py-0.5 rounded border border-primary/20">
                       {study.category}
                     </span>
                     <span className="h-8 w-8 rounded-full border border-border/60 bg-secondary/20 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary transition-all duration-300">
@@ -89,7 +88,7 @@ export default function CaseStudiesModule() {
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
                     Client: {study.client}
                   </p>
-                  
+
                   {/* Description */}
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {study.description}
