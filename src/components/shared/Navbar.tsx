@@ -24,37 +24,39 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo / Branding */}
-          <div className="flex items-center gap-2 hover:cursor-pointer">
-            <Link href="/">
-              <Image src="/logo.png" alt="Logo" width={32} height={32} />
-            </Link>
-          </div>
+        <div className="flex h-16 items-center justify-between gap-4">
+          <div className="flex items-center gap-8">
+            {/* Logo / Branding */}
+            <div className="flex items-center gap-2 hover:cursor-pointer">
+              <Link href="/">
+                <Image src="/logo.png" alt="Logo" width={32} height={32} />
+              </Link>
+            </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`relative text-sm font-medium tracking-wide transition-colors hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'
-                    }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeNavBorder"
-                      className="absolute -bottom-[21px] left-0 right-0 h-[2px] bg-primary"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-6">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative text-sm font-medium tracking-wide transition-colors hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'
+                      }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavBorder"
+                        className="absolute -bottom-[2px] left-0 right-0 h-[2px] bg-primary"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
 
           {/* Actions / Theme Toggle */}
           <div className="hidden md:flex items-center gap-4">

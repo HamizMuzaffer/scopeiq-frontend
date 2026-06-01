@@ -20,8 +20,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ScopeIQ | Enterprise Project Visualizer",
+  title: "ScopeIQ | AI Based Project Visualization and Scoping Tool",
   description: "Operational intelligence, smart scoping, and real-time visualization built in the high-fidelity Obsidian Cyber design system.",
+  icons: {
+    icon: "/logo.png",
+  }, 
 };
 
 export default function RootLayout({
