@@ -1,10 +1,9 @@
-# ScopeIQ Frontend
 
 <div align="center">
 
+<img src="./public/logo.png" alt="ScopeIQ Logo" width="180"/>
 # ScopeIQ
 
-<img src="./public/logo.png" alt="ScopeIQ Logo" width="180"/>
 
 ### AI-Powered Scope Governance & Project Intelligence Platform
 
