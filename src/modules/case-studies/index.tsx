@@ -7,7 +7,7 @@ import  Card  from "./components/CaseCard";
 
 export function CaseStudiesModule() {
   return (
-      <div className="iq-container py-12 md:py-20">
+      <div className="iq-container !max-w-7xl !mx-auto py-12 md:py-20">
         <header className="mb-20 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/30 mb-6">
             <MaterialIcon name="verified" className="text-[16px] text-[var(--primary)]" />
