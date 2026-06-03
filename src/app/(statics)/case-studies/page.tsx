@@ -1,6 +1,4 @@
-import React from 'react';
-import CaseStudiesModule from '@/modules/case-studies';
-
+import { CaseStudiesModule } from '@/modules/case-studies';
 export const metadata = {
   title: 'Case Studies | ScopeIQ',
   description: 'Verified project scoping breakthroughs and client operational metrics built with ScopeIQ.',
