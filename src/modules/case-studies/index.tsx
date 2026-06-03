@@ -1,121 +1,136 @@
-'use client';
+"use client"
+import { motion } from "framer-motion";
+import { MaterialIcon } from "@/components/shared/MaterialIcon";
+import { CONTRAST } from "./constants/index";
+import  Card  from "./components/CaseCard";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CASE_STUDIES, CATEGORIES } from './constants';
-import { caseStudiesHelper } from './helpers/caseStudiesHelper';
-import { FolderGit2, ArrowUpRight, BarChart3, Database } from 'lucide-react';
 
-export default function CaseStudiesModule() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const filteredStudies = caseStudiesHelper.filterStudiesByCategory(
-    CASE_STUDIES,
-    selectedCategory
-  );
-
+export function CaseStudiesModule() {
   return (
-    <div className="flex-1 py-16 sm:py-24 relative z-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        {/* Header Hero */}
-        <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary"
-          >
-            <FolderGit2 className="h-3.5 w-3.5" />
-            Platform Verifications
-          </motion.div>
-
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            Proven Architectural <br />
-            <span className="text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
-              Breakthroughs
-            </span>
-          </h1>
-
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            See how major software enterprises solved complex dependency scoping bottlenecks and optimized their production systems using ScopeIQ.
+      <div className="iq-container py-12 md:py-20">
+        <header className="mb-20 max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/30 mb-6">
+            <MaterialIcon name="verified" className="text-[16px] text-[var(--primary)]" />
+            <span className="font-mono text-[13px] text-[var(--primary)]">TRANSFORMING PROJECT GOVERNANCE</span>
+          </div>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl lg:text-6xl font-sans font-bold mb-6 leading-none">
+            Intelligence in <span className="text-[var(--primary)] italic">Action.</span>
+          </motion.h1>
+          <p className="text-body-lg text-[var(--on-surface-variant)]">
+            Explore how global enterprises use ScopeIQ to eliminate scope drift, optimize resource allocation, and deliver complex projects with 85% higher accuracy.
           </p>
-        </div>
+        </header>
 
-        {/* Categories Tabs Filter */}
-        <div className="flex justify-center gap-2 mb-12 border-b border-border/10 pb-6">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`relative rounded-lg px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${selectedCategory === category
-                ? 'bg-primary text-primary-foreground neon-glow'
-                : 'text-muted-foreground hover:bg-secondary/40 hover:text-foreground'
-                }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredStudies.map((study) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                key={study.id}
-                className="group relative rounded-xl border border-border bg-card p-8 hover:bg-card/90 transition-all duration-300 neon-border cursor-pointer flex flex-col justify-between min-h-[320px]"
-              >
-                <div>
-                  {/* Category Badge & Arrow */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-bold text-primary uppercase bg-primary/10 px-2.5 py-0.5 rounded border border-primary/20">
-                      {study.category}
-                    </span>
-                    <span className="h-8 w-8 rounded-full border border-border/60 bg-secondary/20 flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary transition-all duration-300">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </div>
-
-                  {/* Title & Client */}
-                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {study.title}
-                  </h3>
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
-                    Client: {study.client}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {study.description}
-                  </p>
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-32">
+          <Card className="md:col-span-8" delay={0}>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--primary)]/5 rounded-full blur-3xl -mr-20 -mt-20" />
+            <div className="flex justify-between items-start mb-12 relative z-10">
+              <div>
+                <h3 className="font-mono text-[13px] text-[var(--primary)] uppercase tracking-widest mb-2">Enterprise AI Deployment</h3>
+                <h2 className="text-4xl font-semibold">Lumina Tech Systems</h2>
+              </div>
+              <div className="iq-glass rounded-xl p-4 flex flex-col items-end">
+                <span className="text-[48px] leading-none font-bold text-[var(--primary)]">85%</span>
+                <span className="font-mono text-[13px] text-[var(--on-surface-variant)]">Scope Accuracy</span>
+              </div>
+            </div>
+            <p className="text-body-lg text-[var(--on-surface-variant)] mb-8 max-w-xl relative z-10">
+              How a Fortune 500 leader synchronized 12 global teams and reduced developmental drift by 42% in a high-stakes cloud migration.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-[var(--line)] relative z-10">
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-[13px] text-[var(--on-surface-variant)]">Project Health</span>
+                <div className="flex gap-1">
+                  {[1, 1, 1, 0, 0].map((v, i) => <div key={i} className={`h-1 flex-1 rounded-full ${v ? "bg-[var(--primary)]" : "bg-[var(--line)]"}`} />)}
                 </div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-mono text-[13px] text-[var(--on-surface-variant)]">Status</span>
+                <span className="text-[var(--primary)] font-mono flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" /> Optimal
+                </span>
+              </div>
+            </div>
+          </Card>
 
-                {/* Big Metric Badge Footer */}
-                <div className="mt-8 border-t border-border/10 pt-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary border border-primary/20">
-                    <BarChart3 className="h-5 w-5" />
-                  </div>
+          <Card className="md:col-span-4" delay={0.1}>
+            <div className="w-12 h-12 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center mb-6"><MaterialIcon name="architecture" className="text-[var(--primary)]" /></div>
+            <h3 className="font-mono text-[13px] text-[var(--on-surface-variant)] mb-2">Infrastructure</h3>
+            <h2 className="text-headline-md font-semibold mb-4">Vertex Urban Design</h2>
+            <div className="inline-block px-3 py-1 rounded-lg bg-[var(--primary)]/10 font-mono text-[13px] text-[var(--primary)] mb-6">92% Precision</div>
+            <div className="h-24 w-full bg-[var(--surface-container-low)] rounded-xl overflow-hidden flex items-end px-2 gap-1">
+              {[40, 55, 45, 70, 85, 95].map((h, i) => (
+                <motion.div key={i} initial={{ height: 0 }} whileInView={{ height: `${h}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: i * 0.05 }}
+                  className="bg-[var(--primary)] w-full rounded-t-sm" style={{ opacity: 0.2 + (i * 0.15) }} />
+              ))}
+            </div>
+          </Card>
+
+          <Card className="md:col-span-4" delay={0.2}>
+            <div className="w-12 h-12 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center mb-6"><MaterialIcon name="biotech" className="text-[var(--primary)]" /></div>
+            <h3 className="font-mono text-[13px] text-[var(--on-surface-variant)] mb-2">Bio-Tech Logistics</h3>
+            <h2 className="text-headline-md font-semibold mb-4">Aether Genomix</h2>
+            <div className="inline-block px-3 py-1 rounded-lg bg-[var(--primary)]/10 font-mono text-[13px] text-[var(--primary)] mb-6">78% Drift Reduction</div>
+            <div className="space-y-3">
+              <div className="flex justify-between font-mono text-[13px] text-[var(--on-surface-variant)]">
+                <span>Efficiency</span>
+                <span className="text-[var(--primary)]">+34%</span>
+              </div>
+              <div className="w-full bg-[var(--line)] h-1.5 rounded-full">
+                <motion.div initial={{ width: 0 }} whileInView={{ width: "88%" }} viewport={{ once: true }} transition={{ duration: 1 }}
+                  className="bg-[var(--primary)] h-full rounded-full shadow-[0_0_15px_var(--primary)]" />
+              </div>
+            </div>
+          </Card>
+
+          <Card className="md:col-span-8 overflow-hidden" delay={0.3}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="font-mono text-[13px] text-[var(--on-surface-variant)] mb-2">Financial Systems</h3>
+                <h2 className="text-headline-lg font-semibold mb-4">Nexus Capital</h2>
+                <p className="text-body-md text-[var(--on-surface-variant)] mb-8">Implementing AI governance across sensitive fintech pipelines without compromising regulatory speed.</p>
+              
+              </div>
+              <div className="rounded-xl bg-gradient-to-br from-[var(--surface-container-high)] to-[var(--surface-container)] min-h-[160px] flex items-center justify-center">
+                <MaterialIcon name="account_balance" className="text-[var(--primary)]/50 text-[80px]" />
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        <section className="mb-32">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-semibold mb-4">The Drift Eradication</h2>
+            <p className="text-body-lg text-[var(--on-surface-variant)] max-w-2xl mx-auto">
+              Standard tools react to failures. ScopeIQ prevents them through predictive intelligence.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="iq-glass rounded-2xl p-8 relative aspect-square md:aspect-video flex items-center justify-center">
+              <svg className="w-full h-full" viewBox="0 0 400 200">
+                <path d="M 0 150 Q 50 140 100 160 Q 150 180 200 120 Q 250 100 300 140 Q 350 160 400 60" fill="none" stroke="var(--error)" strokeDasharray="4 4" strokeWidth="2" className="opacity-40" />
+                <motion.path d="M 0 150 C 50 150 150 145 200 145 C 250 145 350 140 400 140" fill="none" stroke="var(--primary)" strokeWidth="3"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 2 }} />
+                <circle cx="400" cy="140" fill="var(--primary)" r="4" />
+              </svg>
+              <div className="absolute top-6 left-6 font-mono text-[13px] text-[var(--error)]/70">BEFORE: Manual Governance</div>
+              <div className="absolute bottom-6 left-6 font-mono text-[13px] text-[var(--primary)]">AFTER: ScopeIQ Intelligence</div>
+            </div>
+            <div className="space-y-8">
+              {CONTRAST.map(([n, t, b]) => (
+                <div key={n} className="flex gap-4 items-start">
+                  <div className="w-10 h-10 shrink-0 rounded-full border border-[var(--primary)]/40 flex items-center justify-center text-[var(--primary)] font-bold">{n}</div>
                   <div>
-                    <span className="block text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
-                      Verified Result
-                    </span>
-                    <span className="text-lg font-extrabold text-foreground tracking-tight">
-                      {study.metric}
-                    </span>
+                    <h4 className="text-headline-md font-semibold mb-2">{t}</h4>
+                    <p className="text-body-md text-[var(--on-surface-variant)]">{b}</p>
                   </div>
                 </div>
-
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
   );
 }
+
+
