@@ -4,6 +4,8 @@
 
 # ScopeIQ
 
+<img src="./public/logo.png" alt="ScopeIQ Logo" width="180"/>
+
 ### AI-Powered Scope Governance & Project Intelligence Platform
 
 Transforming project management through intelligent scope tracking, client transparency, and predictive project analytics.
