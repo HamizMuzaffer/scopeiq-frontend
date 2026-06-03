@@ -65,8 +65,8 @@ export default function HowItWorksModule() {
         <div></div>
       </section>
 
-      <section className="py-24 border-y border-[var(--line)] bg-[var(--surface)]/50">
-        <div className="iq-container">
+      <section className="py-24 border-y  border-[var(--line)] bg-[var(--surface)]/50">
+        <div className="iq-container !max-w-7xl !mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div className="space-y-16">
               {STEPS.map(([tag, title, body], i) => (
@@ -118,7 +118,7 @@ export default function HowItWorksModule() {
       </section>
 
       <section className="py-24 bg-[var(--surface-container-low)]/40">
-        <div className="iq-container">
+        <div className="iq-container !max-w-7xl !mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-sans  font-bold mb-4 iq-text-gradient-soft">
               Both Sides of the Truth
