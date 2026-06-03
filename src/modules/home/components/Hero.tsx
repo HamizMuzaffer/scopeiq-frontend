@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {ArrowRight, Zap } from "lucide-react";
+import {ArrowRight, CirclePlay, PlayIcon, VideoIcon, Zap } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "@/components/shared/ThemeProvider";
 import overlayImage from "../assets/overlay.png";
@@ -79,7 +79,7 @@ export default function Hero() {
                 href="/how-it-works"
                 className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-base font-semibold text-foreground hover:bg-secondary/40 transition-all duration-200"
               >
-                Watch Demo
+               <CirclePlay  className="h-6 w-6" />  Watch Demo
               </Link>
             </motion.div>
           </div>
