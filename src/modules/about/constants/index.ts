@@ -28,7 +28,7 @@ export const TEAM = [
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCqD3MRL2YfLjtbIpgP9lkoM9BXVZFNxZhQ89Laql2lgydssQUyV7dmSCl2Gt_OwDJrqiohwR1mz8PnCOtn1OVTpugkicVR_lOfHpeMyJE54VvfN6_WhN0xVGSbkLas1H0mWM9g_wZnKNQUZBTBWcNmJKM5OJRicjk4wOKVnUlhh0RLIsA-J3jrAQ-b06BQOToySIYNX3kOn8GXi6-QeEtnV8x4SSzihdnHNe4Wum2ivKt1E-o6-nA2fS8W0rAmy9jchPtNw1_qy_mB",
   },
   {
-    name: "Hamiz Muzaffer",
+    name: "Umar Raees",
     role: "Product Designer",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA23T4pRp6IjT8HUG2-J8coyeSOox_XBku4UeuK4hb2CtKKQfoHGN3VbW0juZbIyAi9U2vOKSk9QtZaY7AYzp8V1wXzvYpBuskTXegGFr30XeYfbEkgStKUrVIdW6bNFSPeXQfohENrxEwRB5MeuXCKvJGqbLuR1V0dAQ_zViFBZOmojBIFFuGJ4NYopSXWQdHds06M593aejbZ9rubvTWOonIlkU7pBD6lkY1wKxiLMUqTq4Oq20B19PEb2nd4hmKcRMJgkK0ZAm_S",
   },
