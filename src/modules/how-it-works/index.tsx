@@ -1,183 +1,162 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { WORKFLOW_STEPS } from './constants';
-import { homeHelper } from '../home/helpers/homeHelper';
-import { HelpCircle, GitFork, Sliders, CheckCircle2, Cpu, Sparkles } from 'lucide-react';
-import { toast } from 'sonner';
+import { motion } from "framer-motion";
+import { MaterialIcon } from "@/components/shared/MaterialIcon";
+import { CLIENT_FEATURES, PM_FEATURES, STEPS } from "./constants";
+import { ViewCard } from "./components/ViewCard";
+import Image from "next/image";
+import HOW_IMAGE_DARK from "./assets/how-image-dark.png";
+import HOW_IMAGE_LIGHT from "./assets/how-image-light.png";
+import { useTheme } from "@/components/shared/ThemeProvider";
+import { Button } from "@/components/ui/button";
 
 export default function HowItWorksModule() {
-  const [componentsCount, setComponentsCount] = useState(5);
-  const [integrationsCount, setIntegrationsCount] = useState(2);
-  const [isSimulating, setIsSimulating] = useState(false);
-  const [simResult, setSimResult] = useState<string | null>(null);
+  const { theme } = useTheme();
 
-  const handleSimulate = () => {
-    setIsSimulating(true);
-    setSimResult(null);
-    
-    toast.info('Running scoping simulations...', {
-      description: 'Calculating dependency nodes and edge connections...',
-    });
-
-    setTimeout(() => {
-      const complexity = homeHelper.calculateProjectScopingComplexity(componentsCount, integrationsCount);
-      setIsSimulating(false);
-      setSimResult(complexity);
-      toast.success('Simulation complete!', {
-        description: `Project Scoping Complexity classified as ${complexity}.`,
-      });
-    }, 1200);
-  };
-
+  const howImage = theme === "dark" ? HOW_IMAGE_DARK : HOW_IMAGE_LIGHT;
   return (
-    <div className="flex-1 py-16 sm:py-24 relative z-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Hero */}
-        <div className="text-center max-w-3xl mx-auto space-y-6 mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary"
-          >
-            <GitFork className="h-3.5 w-3.5" />
-            Operational Pipelines
-          </motion.div>
-
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
-            Seamless Workflow <br />
-            <span className="text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
-              Orchestration
+    <>
+      <section className="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4 md:px-12 overflow-hidden iq-grid-bg py-24">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[var(--primary)]/10 rounded-full blur-[160px] animate-pulse" />
+          <div className="absolute inset-0 iq-circuit-bg opacity-50" />
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="z-10 max-w-5xl"
+        >
+          <div className="inline-flex items-center gap-3 iq-glass px-4 py-2 rounded-full mb-10">
+            <MaterialIcon
+              name="sync_alt"
+              className="text-[var(--primary)] text-[18px]"
+              filled
+            />
+            <span className="font-mono text-[13px] text-[var(--primary)] uppercase tracking-[0.2em] font-bold">
+              Synchronized Intelligence{" "}
             </span>
+          </div>
+          <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-[1.3] tracking-tight iq-text-gradient-soft">
+            Unified Project Intelligence.
           </h1>
-
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            From architecture schema input to dynamic, type-safe Redux state bindings—discover how ScopeIQ aligns your development workflow in four technical phases.
+          <p className="text-body-lg text-[var(--on-surface-variant)] max-w-2xl mx-auto">
+            Experience the seamless flow of project governance from proposal to
+            delivery. A high-fidelity unified environment where PMs and Clients
+            see the same truth in real-time.
           </p>
+        </motion.div>
+        <div className="lg:col-span-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative mx-auto max-w-6xl lg:max-w-none rounded-2xl border my-6 border-border bg-card/40 p-1.5 backdrop-blur-md neon-glow"
+          >
+            <Image
+              src={howImage}
+              alt="Dashboard Preview"
+              width={800}
+              height={800}
+              className="rounded-lg object-cover"
+            />
+          </motion.div>
         </div>
 
-        {/* Workflow Steps Horizontal Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-24">
-          {WORKFLOW_STEPS.map((step, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="relative p-6 rounded-xl border border-border bg-card hover:bg-card/90 transition-all duration-200 flex flex-col justify-between"
-            >
-              {/* Connector line for desktop */}
-              {idx < 3 && (
-                <span className="hidden md:block absolute top-1/2 -right-4 w-8 h-[1px] bg-border/40 z-20" />
-              )}
+        <div></div>
+      </section>
 
-              <div>
-                <span className="block text-3xl font-extrabold text-primary/30 mb-4 tracking-tight">
-                  {step.step}
-                </span>
-                <h3 className="text-base font-bold text-foreground mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Dynamic Complexity Simulator Widget */}
-        <div className="max-w-2xl mx-auto rounded-2xl border border-border bg-card p-8 backdrop-blur-md neon-glow relative overflow-hidden">
-          {/* Header */}
-          <div className="flex items-center gap-3 border-b border-border/20 pb-4 mb-6">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary">
-              <Sliders className="h-5 w-5" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-foreground">Scoping Complexity Simulator</h3>
-              <p className="text-xs text-muted-foreground">Adjust components and test operational classifications in real-time.</p>
-            </div>
-          </div>
-
-          {/* Inputs */}
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold text-muted-foreground uppercase">
-                <span>UI Components Count</span>
-                <span className="text-primary font-bold">{componentsCount} Nodes</span>
-              </div>
-              <input
-                type="range"
-                min="1"
-                max="25"
-                value={componentsCount}
-                onChange={(e) => setComponentsCount(Number(e.target.value))}
-                className="w-full h-1.5 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold text-muted-foreground uppercase">
-                <span>External Integrations</span>
-                <span className="text-primary font-bold">{integrationsCount} Edges</span>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="10"
-                value={integrationsCount}
-                onChange={(e) => setIntegrationsCount(Number(e.target.value))}
-                className="w-full h-1.5 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
-              />
-            </div>
-
-            {/* Run button */}
-            <button
-              onClick={handleSimulate}
-              disabled={isSimulating}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:opacity-95 neon-glow disabled:opacity-50"
-            >
-              {isSimulating ? (
-                <>
-                  <span className="h-4 w-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin"></span>
-                  <span>Compiling Edge Graphs...</span>
-                </>
-              ) : (
-                <>
-                  <Cpu className="h-4 w-4" />
-                  <span>Run Scoping Estimate</span>
-                </>
-              )}
-            </button>
-
-            {/* Classification Result display */}
-            <div className="relative min-h-[50px]">
-              {simResult && (
+      <section className="py-24 border-y border-[var(--line)] bg-[var(--surface)]/50">
+        <div className="iq-container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="space-y-16">
+              {STEPS.map(([tag, title, body], i) => (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-4 rounded-xl border border-primary/20 bg-primary/5 flex items-center justify-between"
+                  key={tag}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative pl-8 border-l border-[var(--line)]"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <div>
-                      <span className="block text-[10px] uppercase font-bold text-muted-foreground">Estimated Classification</span>
-                      <span className="text-sm font-bold text-foreground">Scoping Complexity: {simResult}</span>
-                    </div>
+                  <div className="font-mono text-[13px] font-bold text-[var(--primary)] mb-3 tracking-widest">
+                    {tag}
                   </div>
-                  <span className="flex items-center gap-1 text-[11px] font-bold text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded uppercase">
-                    <Sparkles className="h-3 w-3" /> Auto Verified
-                  </span>
+                  <h3 className="text-2xl font-sans font-semibold mb-4">
+                    {title}
+                  </h3>
+                  <p className="text-body-md text-[var(--on-surface-variant)]">
+                    {body}
+                  </p>
                 </motion.div>
-              )}
+              ))}
+            </div>
+            <div className="hidden md:block sticky top-32 h-fit">
+              <div className="iq-glass rounded-[32px] p-8 iq-glow">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono text-[13px] font-bold text-[var(--primary)] tracking-widest">
+                    AI INSIGHT
+                  </span>
+                  <MaterialIcon
+                    name="auto_awesome"
+                    className="text-[var(--primary)] animate-pulse"
+                  />
+                </div>
+                <p className="italic text-[var(--on-surface)]">
+                  "Drift detected in Module B. Adjusting timeline by +2 days to
+                  maintain 98% quality score."
+                </p>
+                <div className="mt-8 h-64 rounded-2xl bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface-container)] to-[var(--surface-container-low)] flex items-center justify-center">
+                  <MaterialIcon
+                    name="hub"
+                    className="text-[var(--primary)] text-[96px] iq-pulse-ring"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </div>
+      <section className="py-24 bg-[var(--surface-container-low)]/40">
+        <div className="iq-container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-sans  font-bold mb-4 iq-text-gradient-soft">
+              Both Sides of the Truth
+            </h2>
+            <p className="text-body-md text-[var(--on-surface-variant)] max-w-xl mx-auto">
+              Same high-integrity data source. Purpose-built tailored
+              perspectives.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <ViewCard
+              title="Project Manager View"
+              tag="ADMINISTRATIVE INTEL"
+              icon="engineering"
+              items={PM_FEATURES}
+              accent
+            />
+            <ViewCard
+              title="Client Portal View"
+              tag="TRANSPARENCY HUB"
+              icon="person"
+              items={CLIENT_FEATURES}
+            />
+          </div>
+        </div>
+      </section>
+      <section className="relative min-h-[50vh] flex flex-col items-center justify-center text-center px-4 md:px-12 overflow-hidden iq-grid-bg py-24">
+        <h1 className="text-4xl lg:text-6xl font-sans font-semibold leading-tight py-1">Stop Reacting. Start Leading.</h1>
+        <p>
+          Join teams who have eliminated scope drift and increased
+          profitability by 30%.
+        </p>
+        <div >
+          <Button className="bg-[var(--primary)] my-4 px-6 py-6 rounded-xl text-black hover:text-white hover:cursor-pointer hover:bg-[var(--primary-hover)] hover:border-[var(--primary-hover)]">
+            Get Started
+          </Button>
+        </div>
+      </section>
+    </>
   );
 }

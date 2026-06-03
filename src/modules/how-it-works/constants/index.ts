@@ -1,22 +1,14 @@
-export const WORKFLOW_STEPS = [
-  {
-    step: '01',
-    title: 'Input Project Parameters',
-    description: 'Feed in architectural targets, budget scope constraints, and technology preferences via our clean form interfaces.',
-  },
-  {
-    step: '02',
-    title: 'Analyze Dependency Edge Map',
-    description: 'Our engine parses components, side-effects, and integrations into a visual node-link tree diagram.',
-  },
-  {
-    step: '03',
-    title: 'Simulate Operational Scenarios',
-    description: 'Run automated estimations across variables using our Redux-mapped system sandbox simulator.',
-  },
-  {
-    step: '04',
-    title: 'Export Production Blueprint',
-    description: 'Download highly optimized, formatted schemas, user-journey structures, and boilerplate setup scripts.',
-  },
+export const PM_FEATURES = [
+  { icon: "monitoring", title: "Detailed Analytics", body: "Deep dive into team velocity, resource allocation, and granular effort tracking across all modules." },
+  { icon: "psychology", title: "Risk Forecasting", body: "AI-driven predictive modeling identifies potential bottlenecks 3 weeks before they occur." },
+];
+export const CLIENT_FEATURES = [
+  { icon: "event_available", title: "Timeline Clarity", body: "High-level roadmaps focused on milestone delivery dates and critical success dependencies." },
+  { icon: "payments", title: "Budget Health", body: "Real-time expenditure tracking versus value delivered. Total cost transparency with zero surprises." },
+];
+export const STEPS = [
+  ["01 — PROPOSAL", "Intelligent Proposals", "PMs create dynamic, AI-assisted proposals. ScopeIQ scans historical project data to provide a real-time risk score."],
+  ["02 — APPROVAL", "Real-time Feedback Loops", "Clients review proposals through an interactive portal where feedback is instantly captured and risk scores are adjusted live."],
+  ["03 — EXECUTION", "Simultaneous Drift Monitoring", "As the project moves, ScopeIQ monitors for scope creep and alerts both PM and Client immediately."],
+  ["04 — DELIVERY", "Automated Verification", "Milestones tracked with crystalline clarity. Completed work is automatically verified against initial success criteria."],
 ];
