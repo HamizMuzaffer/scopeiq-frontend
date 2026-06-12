@@ -47,11 +47,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground cyber-dot-grid">
         <StoreProvider>
           <ThemeProvider>
-            <Navbar />
             <main className="flex flex-col flex-1 relative z-10">
               {children}
             </main>
-            <Footer />
             <Toaster position="bottom-right" theme="dark" />
           </ThemeProvider>
         </StoreProvider>

@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex items-center gap-8">
             {/* Logo / Branding */}
@@ -73,13 +73,13 @@ export default function Navbar() {
             </button>
 
             <Button variant="ghost" size="lg">
-              <Link href="/sign-in">
+              <Link href="/signin">
                 Sign In
               </Link>
             </Button>
 
             <Link
-              href="/how-it-works"
+              href="/signin"
               className="relative inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 neon-glow transition-all duration-200"
             >
               Get Started
