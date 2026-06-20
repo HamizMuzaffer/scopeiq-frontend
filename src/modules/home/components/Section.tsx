@@ -6,12 +6,12 @@ export function SocialProof() {
   return (
     <section className="py-16 border-y border-[var(--on-surface-variant)]/10  bg-[var(--on-surface-variant)]/10">
       <div className="iq-container">
-        <p className="text-center font-mono text-[13px] text-primary uppercase tracking-widest mb-10">
+        <p className="text-center text-[18px] text-primary uppercase tracking-widest mb-10">
           Trusted by next-gen startups
         </p>
         <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-6 opacity-60">
           {LANDING_BRANDS.map((b) => (
-            <span key={b} className="font-[Geist] text-2xl font-bold tracking-tight text-[var(--on-surface)] hover:text-[var(--primary)] transition-colors">
+            <span key={b} className=" text-2xl font-bold tracking-tight text-[var(--on-surface)] hover:text-[var(--primary)] transition-colors">
               {b}
             </span>
           ))}
