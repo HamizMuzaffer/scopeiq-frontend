@@ -1,9 +1,12 @@
+import { SelectRolePage } from '@/modules/auth/select-role'
 import React from 'react'
 
-const SelectRolePage = () => {
+const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <SelectRolePage />
+    </div>
   )
 }
 
-export default SelectRolePage
+export default page

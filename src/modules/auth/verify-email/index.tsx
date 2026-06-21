@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AuthShell } from "@/components/shared/layout/AuthShell";
 import { MaterialIcon } from "@/components/shared/MaterialIcon";
+import { useRouter } from "next/navigation";
 
 export function VerifyEmailPage() {
+  const router = useRouter();
   const [digits, setDigits] = useState<string[]>(Array(6).fill(""));
   const [secs, setSecs] = useState(179);
   const refs = useRef<Array<HTMLInputElement | null>>([]);
