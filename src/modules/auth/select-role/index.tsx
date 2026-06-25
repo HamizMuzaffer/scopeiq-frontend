@@ -7,6 +7,8 @@ import { MaterialIcon } from "@/components/shared/MaterialIcon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ROLES } from "./constants";
+import { ProtectedRoute } from "../context/AuthContext";
+import { AUTH_ROUTES } from "../constants";
 
 
 
@@ -14,7 +16,8 @@ export function SelectRolePage() {
   const [selected, setSelected] = useState<string | null>(null);
   const router = useRouter();
   return (
-    <AuthShell leftPanel={
+    <ProtectedRoute>
+      <AuthShell leftPanel={
       <div className="relative z-10 max-w-lg">
         <span className="text-[var(--primary)] font-mono text-4xl font-bold">Intelligent Governance</span>
         <h2 className="text-2xl font-semibold mt-4 mb-6">Elevate your project delivery standards.</h2>
@@ -66,12 +69,12 @@ export function SelectRolePage() {
           })}
         </div>
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <Link href="/auth/welcome" className="font-mono text-[13px] text-[var(--on-surface-variant)] hover:text-[var(--on-surface)] flex items-center gap-2">
+          <Link href={AUTH_ROUTES.SIGNIN} className="font-mono text-[13px] text-[var(--on-surface-variant)] hover:text-[var(--on-surface)] flex items-center gap-2">
             <MaterialIcon name="arrow_back" className="text-sm" /> Back to Sign In
           </Link>
           <button
             disabled={!selected}
-            onClick={() => router.push("/auth/complete-profile")}
+            onClick={() => router.push(`${AUTH_ROUTES.COMPLETE_PROFILE}?role=${selected}`)}
             className={`w-full sm:w-auto px-10 py-4 rounded-lg font-semibold transition-all ${selected
               ? "bg-[var(--primary)] text-[var(--on-primary)] hover:brightness-110 shadow-[0_0_20px_color-mix(in_oklab,var(--primary)_30%,transparent)]"
               : "bg-[var(--primary)]/50 text-[var(--on-primary)] opacity-50 cursor-not-allowed"
@@ -82,5 +85,6 @@ export function SelectRolePage() {
         </div>
       </div>
     </AuthShell>
+  </ProtectedRoute>
   );
 }

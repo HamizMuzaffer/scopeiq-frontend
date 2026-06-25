@@ -3,6 +3,7 @@ import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { StoreProvider } from "@/store/StoreProvider";
+import { AuthProvider } from "@/modules/auth/context/AuthContext";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -46,12 +47,14 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground cyber-dot-grid">
         <StoreProvider>
-          <ThemeProvider>
-            <main className="flex flex-col flex-1 relative z-10">
-              {children}
-            </main>
-            <Toaster position="bottom-right" theme="dark" />
-          </ThemeProvider>
+          <AuthProvider>
+            <ThemeProvider>
+              <main className="flex flex-col flex-1 relative z-10">
+                {children}
+              </main>
+              <Toaster position="bottom-right" theme="dark" />
+            </ThemeProvider>
+          </AuthProvider>
         </StoreProvider>
       </body>
     </html>
