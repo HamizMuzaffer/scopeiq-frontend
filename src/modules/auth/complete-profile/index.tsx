@@ -112,7 +112,8 @@ function CompleteProfileContent() {
       toast.success("Profile personalization complete!");
       router.push(AUTH_ROUTES.ACCOUNT_CREATED);
     } catch (err: any) {
-      const msg = err.response?.data?.message || err.message || "Failed to complete profile registration.";
+      const rawMsg = err.response?.data?.message || err.message || "Failed to complete profile registration.";
+      const msg = Array.isArray(rawMsg) ? rawMsg.join('. ') : rawMsg;
       toast.error(msg);
     } finally {
       setSubmitting(false);

@@ -63,7 +63,8 @@ function VerifyEmailContent() {
         `${AUTH_ROUTES.SET_PASSWORD}?email=${encodeURIComponent(email)}&tempToken=${encodeURIComponent(tempToken)}`
       );
     } catch (err: any) {
-      const msg = err.response?.data?.message || err.message || "Invalid or expired verification code.";
+      const rawMsg = err.response?.data?.message || err.message || "Invalid or expired verification code.";
+      const msg = Array.isArray(rawMsg) ? rawMsg.join('. ') : rawMsg;
       toast.error(msg);
     } finally {
       setSubmitting(false);
@@ -77,7 +78,9 @@ function VerifyEmailContent() {
       setSecs(OTP_EXPIRY_SECONDS);
       toast.success("New verification code sent!");
     } catch (err: any) {
-      toast.error(err.message || "Failed to resend code.");
+      const rawMsg = err.response?.data?.message || err.message || "Failed to resend code.";
+      const msg = Array.isArray(rawMsg) ? rawMsg.join('. ') : rawMsg;
+      toast.error(msg);
     }
   };
 

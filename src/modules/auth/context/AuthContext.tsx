@@ -85,25 +85,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     tempToken: string,
     fullName?: string
   ): Promise<User> => {
-    dispatch(setLoading(true));
-    try {
-      const data = await authService.setPassword(email, password, tempToken, fullName);
-      dispatch(setSession(data));
-      return data.user;
-    } finally {
-      dispatch(setLoading(false));
-    }
+    const data = await authService.setPassword(email, password, tempToken, fullName);
+    dispatch(setSession(data));
+    return data.user;
   };
 
   const login = async (email: string, password: string): Promise<User> => {
-    dispatch(setLoading(true));
-    try {
-      const data = await authService.login(email, password);
-      dispatch(setSession(data));
-      return data.user;
-    } finally {
-      dispatch(setLoading(false));
-    }
+    const data = await authService.login(email, password);
+    dispatch(setSession(data));
+    return data.user;
   };
 
   const uploadAvatar = async (file: File): Promise<string> => {
@@ -118,14 +108,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     username: string,
     role: 'client' | 'project_manager'
   ): Promise<User> => {
-    dispatch(setLoading(true));
-    try {
-      const data = await authService.completeProfile(username, role);
-      dispatch(setSession(data));
-      return data.user;
-    } finally {
-      dispatch(setLoading(false));
-    }
+    const data = await authService.completeProfile(username, role);
+    dispatch(setSession(data));
+    return data.user;
   };
 
   const logout = async () => {

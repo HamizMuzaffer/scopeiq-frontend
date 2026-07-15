@@ -18,8 +18,14 @@ import { toast } from 'sonner';
 const setPasswordSchema = z
   .object({
     fullName: z.string().min(2, 'Full name must be at least 2 characters'),
-    password: z.string().min(6, 'Password must be at least 6 characters'),
-    confirmPassword: z.string().min(6, 'Please confirm your password'),
+    password: z
+      .string()
+      .min(8, 'Password must be at least 8 characters')
+      .regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/,
+        'Password must contain uppercase, lowercase, number and special character'
+      ),
+    confirmPassword: z.string().min(8, 'Please confirm your password'),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
@@ -67,7 +73,8 @@ function SetPasswordContent() {
       toast.success('Account created successfully!');
       router.push(AUTH_ROUTES.SELECT_ROLE);
     } catch (err: any) {
-      const msg = err.response?.data?.message || err.message || 'Failed to establish security credentials.';
+      const rawMsg = err.response?.data?.message || err.message || 'Failed to establish security credentials.';
+      const msg = Array.isArray(rawMsg) ? rawMsg.join('. ') : rawMsg;
       toast.error(msg);
     } finally {
       setSubmitting(false);

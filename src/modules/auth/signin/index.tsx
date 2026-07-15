@@ -75,7 +75,8 @@ export function SignInModule() {
         toast.success("Logged in successfully!");
       }
     } catch (err: any) {
-      const msg = err.response?.data?.message || err.message || "An authentication error occurred.";
+      const rawMsg = err.response?.data?.message || err.message || "An authentication error occurred.";
+      const msg = Array.isArray(rawMsg) ? rawMsg.join('. ') : rawMsg;
       toast.error(msg);
     } finally {
       setSubmitting(false);
